@@ -10,14 +10,14 @@ public class Node {
     }
 
     public Node(Object value) {
-        this.value = value;
-        next = null;
+        setValue(value);
+        setNext(null);
     }
 
     public Node(Object value, Node previous) {
-        this.value = value;
-        previous.next = this;
-        next = null;
+        setValue(value);
+        setNext(null);
+        previous.setNext(this);
     }
 
     public Node getNext() {

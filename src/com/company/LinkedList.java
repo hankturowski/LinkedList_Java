@@ -1,20 +1,36 @@
 package com.company;
 
+import java.util.AbstractList;
+import java.util.function.Consumer;
+
 /**
  * Created by Hank on 3/25/2015.
  */
-public class LinkedList {
+public class LinkedList extends AbstractList<Object> {
     private Node head;
+    private int listSize;
 
     public LinkedList() {
         head = new Node(null);
     }
 
-    public Node getHead() {
-        return head;
+    @Override
+    public int size() {
+        return listSize;
     }
 
-    public void addNode(Object value) {
+    @Override
+    public boolean add(Object value) {
+        addNode(value);
+        return true;
+    }
+
+    @Override
+    public void add(int index, Object value) {
+        addNode(index, value);
+    }
+
+    private void addNode(Object value) {
         Node newNode = new Node(value);
         Node currentNode = head;
 
@@ -23,9 +39,10 @@ public class LinkedList {
         }
 
         currentNode.setNext(newNode);
+        listSize++;
     }
 
-    public void addNode(Object value, int index) {
+    private void addNode(int index, Object value) {
         Node newNode = new Node(value);
 
         Node parent = getNode(index - 1);
@@ -33,9 +50,10 @@ public class LinkedList {
 
         parent.setNext(newNode);
         newNode.setNext(child);
+        listSize++;
     }
 
-    public Node getNode(int index) {
+    private Node getNode(int index) {
         Node currentNode = head;
 
         for (int i = 0; i < index; i++) {
@@ -46,12 +64,29 @@ public class LinkedList {
         return currentNode;
     }
 
-    public Node removeNode(int index) {
+    private Node removeNode(int index) {
         Node parent = getNode(index - 1);
         Node removed = parent.getNext();
         parent.setNext(removed.getNext());
-
+        listSize--;
         return removed;
+    }
+
+    @Override
+    public Object remove(int index) {
+        Node removed = removeNode(index);
+        return removed.getValue();
+    }
+
+    public Object get(int index) {
+        if (index > listSize) return null;
+        return getNode(index).getValue();
+    }
+
+    @Override
+    public Object set(int index, Object element) {
+        getNode(index).setValue(element);
+        return element;
     }
 
 }

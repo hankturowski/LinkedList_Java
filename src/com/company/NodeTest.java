@@ -22,4 +22,14 @@ public class NodeTest {
 
         org.junit.Assert.assertEquals(h.getNext(), a);
     }
+
+    @Test
+    public void testCanSetValue() {
+        Node h = new Node(1);
+        h.setValue(2);
+
+        Integer expected = 2;
+
+        org.junit.Assert.assertEquals(h.getValue(), expected);
+    }
 }

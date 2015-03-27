@@ -18,65 +18,80 @@ public class LinkedListTest {
     @Test
     public void testCanGetHead() {
         LinkedList list = new LinkedList();
-        org.junit.Assert.assertEquals(list.getHead().getValue(), null);
+        org.junit.Assert.assertEquals(list.get(1), null);
     }
 
     @Test
     public void testCanAddNode() {
         LinkedList list = new LinkedList();
-        list.addNode(1);
-        org.junit.Assert.assertEquals(list.getHead().getNext().getValue(), 1);
+        list.add(1);
+        Integer expected = 1;
+        org.junit.Assert.assertEquals(list.get(1), expected);
+        org.junit.Assert.assertEquals(list.size(), 1);
     }
 
     @Test
     public void testCanAddTwoNodes() {
         LinkedList list = new LinkedList();
-        list.addNode(1);
-        list.addNode(2);
-        org.junit.Assert.assertEquals(list.getHead().getNext().getNext().getValue(), 2);
-        org.junit.Assert.assertEquals(list.getHead().getNext().getValue(), 1);
+        list.add(1);
+        list.add(2);
+
+        Integer expected = 2;
+        org.junit.Assert.assertEquals(list.get(2), expected);
+
+        expected = 1;
+        org.junit.Assert.assertEquals(list.get(1), expected);
     }
 
     @Test
     public void testCanAddThreeNodes() {
         LinkedList list = new LinkedList();
-        list.addNode(1);
-        list.addNode(2);
-        list.addNode(3);
+        list.add(1);
+        list.add(2);
+        list.add(3);
 
-        Node second = list.getNode(2);
-        org.junit.Assert.assertEquals(second.getValue(), 2);
-        Node missing = list.getNode(5);
-        org.junit.Assert.assertNull(missing);
+        Integer expected = 2;
+        org.junit.Assert.assertEquals(list.get(2), expected);
+        org.junit.Assert.assertNull(list.get(5));
     }
 
     @Test
     public void testCanAddMiddleNode() {
         LinkedList list = new LinkedList();
-        list.addNode(1);
-        list.addNode(2);
-        list.addNode(3);
-        list.addNode(4);
+        list.add(1);
+        list.add(2);
+        list.add(3);
+        list.add(4);
 
-        list.addNode(10,3);
+        list.add(3, 10);
 
-        Node wanted = list.getNode(3);
-        org.junit.Assert.assertEquals(wanted.getValue(), 10);
+        Integer expected = 10;
+        org.junit.Assert.assertEquals(list.get(3), expected);
     }
 
     @Test
     public void testCanRemoveNode() {
         LinkedList list = new LinkedList();
-        list.addNode(1);
-        list.addNode(2);
-        list.addNode(3);
-        list.addNode(4);
+        list.add(1);
+        list.add(2);
+        list.add(3);
+        list.add(4);
 
-        Node removed = list.removeNode(3);
-        org.junit.Assert.assertEquals(removed.getValue(), 3);
+        list.remove(3);
+        Integer expected = 4;
+        org.junit.Assert.assertEquals(list.get(3), expected);
+    }
 
-        Node newThird = list.getNode(3);
-        org.junit.Assert.assertEquals(newThird.getValue(), 4);
+    @Test
+    public void testCanGetSpecificValue() {
+        LinkedList list = new LinkedList();
+        list.add(1);
+        list.add(2);
+        list.add(3);
+        list.add(4);
+
+        Object expected = list.get(2);
+        org.junit.Assert.assertEquals(2, expected);
     }
 
 }

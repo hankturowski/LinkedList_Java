@@ -1,4 +1,4 @@
-package com.company;
+package Turowski.LinkedList;
 
 public class Node {
     private Object value;

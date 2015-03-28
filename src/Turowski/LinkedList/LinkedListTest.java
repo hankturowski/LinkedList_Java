@@ -1,4 +1,4 @@
-package com.company;
+package Turowski.LinkedList;
 
 import org.junit.Test;
 
@@ -18,7 +18,7 @@ public class LinkedListTest {
     @Test
     public void testCanGetHead() {
         LinkedList list = new LinkedList();
-        org.junit.Assert.assertEquals(list.get(1), null);
+        assertEquals(list.get(1), null);
     }
 
     @Test
@@ -26,8 +26,8 @@ public class LinkedListTest {
         LinkedList list = new LinkedList();
         list.add(1);
         Integer expected = 1;
-        org.junit.Assert.assertEquals(list.get(1), expected);
-        org.junit.Assert.assertEquals(list.size(), 1);
+        assertEquals(list.get(1), expected);
+        assertEquals(list.size(), 1);
     }
 
     @Test
@@ -37,10 +37,10 @@ public class LinkedListTest {
         list.add(2);
 
         Integer expected = 2;
-        org.junit.Assert.assertEquals(list.get(2), expected);
+        assertEquals(list.get(2), expected);
 
         expected = 1;
-        org.junit.Assert.assertEquals(list.get(1), expected);
+        assertEquals(list.get(1), expected);
     }
 
     @Test
@@ -51,7 +51,7 @@ public class LinkedListTest {
         list.add(3);
 
         Integer expected = 2;
-        org.junit.Assert.assertEquals(list.get(2), expected);
+        assertEquals(list.get(2), expected);
         org.junit.Assert.assertNull(list.get(5));
     }
 
@@ -66,7 +66,7 @@ public class LinkedListTest {
         list.add(3, 10);
 
         Integer expected = 10;
-        org.junit.Assert.assertEquals(list.get(3), expected);
+        assertEquals(list.get(3), expected);
     }
 
     @Test
@@ -79,7 +79,7 @@ public class LinkedListTest {
 
         list.remove(3);
         Integer expected = 4;
-        org.junit.Assert.assertEquals(list.get(3), expected);
+        assertEquals(list.get(3), expected);
     }
 
     @Test

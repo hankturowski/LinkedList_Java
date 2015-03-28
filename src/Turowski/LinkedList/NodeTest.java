@@ -1,4 +1,4 @@
-package com.company;
+package Turowski.LinkedList;
 
 import org.junit.Test;
 
@@ -20,7 +20,7 @@ public class NodeTest {
         Node h = new Node(1);
         Node a = new Node(2, h);
 
-        org.junit.Assert.assertEquals(h.getNext(), a);
+        assertEquals(h.getNext(), a);
     }
 
     @Test
@@ -30,6 +30,6 @@ public class NodeTest {
 
         Integer expected = 2;
 
-        org.junit.Assert.assertEquals(h.getValue(), expected);
+        assertEquals(h.getValue(), expected);
     }
 }
